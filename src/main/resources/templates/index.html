@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mobile Management System</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	
+</head>
+<body>
+
+	<div class="container my-2">
+	<h1>Mobile List</h1>
+	
+	<a th:href = "@{/showNewMobileForm}" class="btn btn-primary btn-sm mb-3"> Add Mobile </a>
+	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+				    <th>
+						<a>Cateogry</a>
+					</th>
+				
+					<th>
+						<a>Name</a>
+					</th>
+					
+					
+					<th>
+						<a>Phone</a>
+					</th>
+					
+					<th>
+						<a>SubCategory</a>
+					</th>
+				
+					<th> Actions </th>
+				</tr>
+			</thead>
+			 <tbody>
+				   <tr th:each=" c:${allMobiles}">
+					<td th:text="${c.catrgory}"></td>
+					<td th:text="${c.name}"></td>
+					<td th:text="${c.phone}"></td>
+					<td th:text="${c.subcategory}"></td>
+					<td> <a th:href="@{/showFormForUpdate/{id}(id=${c.id})}" class="btn btn-primary">Update</a>
+					    <a th:href="@{/deleteMobile/{id}(id=${c.id})}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			</tbody> 
+		</table>
+		
+	</div>
+</body>
+</html>
+
+<!-- <td> <a  th:href="@{/showFormForUpdate/{id}(id=${mobile.id})}" class="btn btn-primary">Update</a>
+					    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"class="btn btn-danger">Delete</a>
+					</td>
+ -->
